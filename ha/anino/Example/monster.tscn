@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bww2uhh5k5c30"]
+
+[ext_resource type="Script" uid="uid://bgwrh6dyp5jis" path="res://Chase.gd" id="1_wxwpc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x0d7q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxwpc"]
+vertex_color_is_srgb = true
+albedo_color = Color(0.6957691, 0.070884384, 2.8878452e-07, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3ay1f"]
+material = SubResource("StandardMaterial3D_wxwpc")
+
+[sub_resource type="Skin" id="Skin_x0d7q"]
+
+[node name="Monster" type="CharacterBody3D"]
+script = ExtResource("1_wxwpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_x0d7q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3ay1f")
+skin = SubResource("Skin_x0d7q")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

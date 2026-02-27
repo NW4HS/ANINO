@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvmm16uy41fih"]
+
+[ext_resource type="PackedScene" uid="uid://b6ualqndnjois" path="res://Player/player.tscn" id="1_2hquy"]
+[ext_resource type="PackedScene" uid="uid://clid1430bou25" path="res://Example/ExampleEnemy.tscn" id="3_yyuxm"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yyuxm"]
+vertices = PackedVector3Array(-19.5, 1, -19.5, -19.5, 1, 19.5, 19.5, 1, 19.5, 19.5, 1, -19.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yyuxm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyuxm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yyuxm"]
+
+[sub_resource type="Gradient" id="Gradient_070j2"]
+colors = PackedColorArray(0.56532, 0.251353, 0, 1, 0.0768147, 0.0244518, 6.01634e-09, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lmqqu"]
+noise_type = 2
+frequency = 0.0222
+fractal_octaves = 1
+fractal_lacunarity = -0.23
+fractal_gain = 0.205
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_37qne"]
+noise = SubResource("FastNoiseLite_lmqqu")
+color_ramp = SubResource("Gradient_070j2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxgiu"]
+albedo_texture = SubResource("NoiseTexture2D_37qne")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b3tqn"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_yyuxm"]
+
+[node name="Habitat" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_2hquy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8996391, 1.4865232, 12.7958555)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.47756147, 0)
+navigation_mesh = SubResource("NavigationMesh_yyuxm")
+
+[node name="Node3D" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Node3D"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_yyuxm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Node3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_yyuxm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.06723164, -0.9977374, 0, 0.9977374, 0.06723164, 0, 0, 0)
+
+[node name="ExampleEnemy" parent="." instance=ExtResource("3_yyuxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3322661, -2.5058727)
+
+[node name="Block1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.994, 0, 0, 0, 6.087, 0, 0, 0, 1.994, 0, 2.0133789, 2.511179)
+mesh = SubResource("BoxMesh_yyuxm")
+surface_material_override/0 = SubResource("StandardMaterial3D_qxgiu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Block1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_b3tqn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yyuxm")
