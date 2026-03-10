@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvmm16uy41fih"]
+
+[ext_resource type="PackedScene" uid="uid://b6ualqndnjois" path="res://Scenes/Player/player.tscn" id="1_3y6oy"]
+[ext_resource type="PackedScene" uid="uid://clid1430bou25" path="res://addons/Example/ExampleEnemy.tscn" id="2_m0c2i"]
+[ext_resource type="PackedScene" uid="uid://ddyd3e32kos1t" path="res://Assets/3D models/simple_house/simple_house.tscn" id="3_w6yjh"]
+[ext_resource type="PackedScene" uid="uid://5q4d0rga8hcw" path="res://Scenes/UI/PauseMenu.tscn" id="4_vol70"]
+[ext_resource type="PackedScene" uid="uid://f06dbujcs7lf" path="res://Scenes/Creatures/NPC/NPC1-George.tscn" id="5_m0c2i"]
+
+[sub_resource type="Environment" id="Environment_yyuxm"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_3y6oy"]
+vertices = PackedVector3Array(-39.5, 1.0224385, -39.5, -39.5, 1.0224385, 39.5, 39.5, 1.0224385, 39.5, 39.5, 1.0224385, -39.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+agent_height = 1.8
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yyuxm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0c2i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyuxm"]
+
+[node name="Habitat" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_3y6oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2645502, 1.0588493, -7.7109165)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.06723164, -0.9977374, 0, 0.9977374, 0.06723164, 0, 0, 0)
+
+[node name="ExampleEnemy" parent="." instance=ExtResource("2_m0c2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3322661, -2.5058727)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yyuxm")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.995938, -0.041338027, -0.0799916, 0.07239457, -0.16062248, 0.9843574, -0.053539835, -0.9861498, -0.15697739, -5.8001766, 20.734442, -2.7377768)
+
+[node name="SimpleHouse" parent="." instance=ExtResource("3_w6yjh")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 11.7453785, -0.5491673, -23.888304)
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_vol70")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_3y6oy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(40, 0, 0, 0, 2, 0, 0, 0, 40, 0, -0.47756147, 0)
+mesh = SubResource("PlaneMesh_yyuxm")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_m0c2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_yyuxm")
+
+[node name="Node3D" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="George" parent="." instance=ExtResource("5_m0c2i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44545, 1.4977615, -5.0505714)

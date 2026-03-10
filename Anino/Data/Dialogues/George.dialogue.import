@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b7i131qahf38"
+path="res://.godot/imported/George.dialogue-4a731abead567c776cf8f447c00aecb1.tres"
+
+[deps]
+
+source_file="res://Data/Dialogues/George.dialogue"
+dest_files=["res://.godot/imported/George.dialogue-4a731abead567c776cf8f447c00aecb1.tres"]
+
+[params]
+
+defaults=true

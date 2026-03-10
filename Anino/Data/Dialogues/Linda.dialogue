@@ -1,0 +1,11 @@
+~ start
+Linda: Ano ang maitutulong ko saiyo?
+Linda: Here are some choices.
+- May hinahanap akong maligno
+	Linda: Tingin ka sa salamin
+- 67
+	Linda: Hamapsin kaya kita?
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END

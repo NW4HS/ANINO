@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://f06dbujcs7lf"]
+
+[ext_resource type="Script" uid="uid://cvlfw67uev3c2" path="res://Scripts/Creatures/NPC/NPC_Gala.gd" id="1_p2i3y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q8r46"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_p2i3y"]
+albedo_color = Color(0.43529412, 0.5764706, 0.91764706, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y4xjo"]
+material = SubResource("ORMMaterial3D_p2i3y")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p2i3y"]
+
+[node name="George" type="CharacterBody3D"]
+script = ExtResource("1_p2i3y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_q8r46")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_y4xjo")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+debug_enabled = true
+
+[node name="WaitTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_p2i3y")

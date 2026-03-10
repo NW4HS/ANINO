@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpu5q78x2oow4"]
+
+[ext_resource type="PackedScene" uid="uid://b6ualqndnjois" path="res://Scenes/Player/player.tscn" id="1_7sn28"]
+[ext_resource type="PackedScene" uid="uid://f06dbujcs7lf" path="res://Scenes/Creatures/NPC/NPC1-George.tscn" id="2_hi00f"]
+[ext_resource type="PackedScene" uid="uid://5q4d0rga8hcw" path="res://Scenes/UI/PauseMenu.tscn" id="3_hi00f"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_n20mt"]
+vertices = PackedVector3Array(-14.5, 0.5, -14.5, -14.5, 0.5, 14.5, 14.5, 0.5, 14.5, 14.5, 0.5, -14.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jy50n"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7sn28"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hi00f"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26275444, 0)
+navigation_mesh = SubResource("NavigationMesh_n20mt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, -0.1482954, 0)
+mesh = SubResource("PlaneMesh_jy50n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_7sn28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1.9999999, 0, 0, 0, 0.049999997, 0, 0, 0, 1.9999999, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_hi00f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99989563, -0.014450823, -2.4734121e-11, 0.009799595, 0.67806315, 0.7349382, -0.010620462, -0.7348615, 0.67813396, 0, 8.197817, 35.172874)
+
+[node name="George" parent="." instance=ExtResource("2_hi00f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3568282, 1.114459, 3.0038307)
+
+[node name="Player" parent="." instance=ExtResource("1_7sn28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8008175, 1.114459, 9.166061)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_hi00f")]

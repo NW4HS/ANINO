@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1duympgfil28"]
+
+[ext_resource type="Script" uid="uid://bbyc406tarnbm" path="res://Scripts/UI/PauseMenu.gd" id="1_xrnce"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xrnce")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.8250003
+anchor_top = 1.0
+anchor_right = 3.8250003
+anchor_bottom = 1.0
+offset_left = 291.0
+offset_top = 54.0
+offset_right = 576.0
+offset_bottom = 132.0
+text = "Resume
+"
+
+[node name="Options" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 220.0
+offset_right = 711.0
+offset_bottom = 296.0
+text = "Option"
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 350.0
+offset_right = 696.0
+offset_bottom = 423.0
+text = "Quit"
+
+[connection signal="pressed" from="Control/Resume" to="." method="_on_resume_pressed"]

@@ -1,0 +1,21 @@
+{
+	"npc_name": "Aling Linda",
+	"lines": [
+		{
+			"text": "Ano ang hanap mo dito sa baryo?",
+			"choices": [
+				{
+					"label": "67",
+					"response": "67? Kung hampasin kaya kita"
+				},
+				{
+					"label": "May hinahanap ako na maligno",
+					"response": "Tumingin kana ba sa salamin?"
+				}
+			]
+		},
+		{
+			"text": "Ingat ka, baka masagasaan ka sa daan"
+		}
+	]
+}
