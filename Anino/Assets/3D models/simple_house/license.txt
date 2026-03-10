@@ -1,0 +1,11 @@
+Model Information:
+* title:	Simple House
+* source:	https://sketchfab.com/3d-models/simple-house-2dc6d034f0ba4b0694872d032dd7bd56
+* author:	COSdelque (https://sketchfab.com/COSdelque)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Simple House" (https://sketchfab.com/3d-models/simple-house-2dc6d034f0ba4b0694872d032dd7bd56) by COSdelque (https://sketchfab.com/COSdelque) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
