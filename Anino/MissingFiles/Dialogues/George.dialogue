@@ -1,0 +1,10 @@
+~ start
+George: Hi hello
+George: Testing
+- Una
+	George: You picked the first one.
+- Pangalawa
+	George: You picked the second one.
+- Ulet => start
+- Itigil
+=> END

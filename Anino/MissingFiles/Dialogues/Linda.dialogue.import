@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cqgud1h72r13j"
+path="res://.godot/imported/Linda.dialogue-d0c1f67f8fcc9f0ad8f617f09cd05011.tres"
+
+[deps]
+
+source_file="res://Data/Dialogues/Linda.dialogue"
+dest_files=["res://.godot/imported/Linda.dialogue-d0c1f67f8fcc9f0ad8f617f09cd05011.tres"]
+
+[params]
+
+defaults=true
